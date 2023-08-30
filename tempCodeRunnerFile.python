@@ -1,0 +1,41 @@
+class CV:
+  """A class to represent a curriculum vitae."""
+
+  def __init__(self):
+    """Initializes the CV."""
+    self.experiences = []
+
+  def add_experience(self):
+    """Adds an experience to the CV."""
+    company = input("Enter the company name: ")
+    title = input("Enter the title of the position: ")
+    start_date = input("Enter the start date (YYYY-MM-DD): ")
+    end_date = input("Enter the end date (YYYY-MM-DD): ")
+    description = input("Enter a description of the experience: ")
+    experience = Experience(company, title, start_date, end_date, description)
+    self.experiences.append(experience)
+
+    answer = input("Do you want to add another experience? (y/n): ")
+    if answer == "y":
+      self.add_experience()
+    else:
+      return
+
+class Experience:
+  """A class to represent an experience in a curriculum vitae."""
+
+  def __init__(self, company, title, start_date, end_date, description):
+    """Initializes the experience."""
+    self.company = company
+    self.title = title
+    self.start_date = start_date
+    self.end_date = end_date
+    self.description = description
+
+
+if __name__ == "__main__":
+  cv = CV()
+
+  cv.add_experience()
+
+  print(cv.experiences)
